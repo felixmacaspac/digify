@@ -6,8 +6,9 @@ import { useEffect } from "react";
 function Page(): JSX.Element {
   // Access the user object from the authentication context
   // const { user } = useAuthContext();
-  const { user } = useAuthContext() as { user: any }; // Use 'as' to assert the type as { user: any }
+  const { user } = useAuthContext() as { user: any };
   const router = useRouter();
+
 
   useEffect( () => {
     // Redirect to the home page if the user is not logged in
@@ -18,7 +19,7 @@ function Page(): JSX.Element {
   }, [ user, router ] ); // Include 'router' in the dependency array to resolve eslint warning
 
   return (
-    <h1>Only logged-in users can view this page</h1>
+    <h1>YOU ARE LOGGED-IN</h1>
   );
 }
 
