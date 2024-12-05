@@ -1,18 +1,24 @@
-import { AuthContextProvider } from '@/context/AuthContext';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import { AuthContextProvider } from "@/context/AuthContext";
+import { Poppins } from "next/font/google";
+import "./globals.css";
 
-// Load the Inter font with 'latin' subset
-const inter = Inter( { subsets: [ 'latin' ] } );
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 // Metadata for the application
 export const metadata = {
-  title: 'Next.js + Firebase Starter',
-  description: 'Template to use Next.js with Firebase',
+  title: "Digify",
+  description: "Template to use Next.js with Firebase",
 };
 
 // Root layout component for the application
-export default function RootLayout( { children }: { children: React.ReactNode } ): JSX.Element {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
   return (
     <html lang="en">
       {/*
@@ -21,11 +27,9 @@ export default function RootLayout( { children }: { children: React.ReactNode } 
         Learn more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className={poppins.className}>
         {/* Wrap the children with the AuthContextProvider to provide authentication context */}
-        <AuthContextProvider>
-          {children}
-        </AuthContextProvider>
+        <AuthContextProvider>{children}</AuthContextProvider>
       </body>
     </html>
   );
